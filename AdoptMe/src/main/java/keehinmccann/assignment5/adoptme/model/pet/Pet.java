@@ -1,6 +1,6 @@
 package keehinmccann.assignment5.adoptme.model.pet;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet>{
 	private int id;
 	private String name;
 	private String type;
@@ -52,6 +52,16 @@ public abstract class Pet {
 	}
 	public void setAdopted(boolean adopted) {
 		this.adopted = adopted;
+	}
+	
+	@Override
+	public String toString() {
+		return ("Name: " + name + " Type: " + type + " ID: " + id + " Species: " + species + " Age: " + age + " Adopted: " + adopted);
+	}
+	
+	@Override
+	public int compareTo(Pet o) {
+		return name.compareTo(o.name);
 	}
 	
 }
