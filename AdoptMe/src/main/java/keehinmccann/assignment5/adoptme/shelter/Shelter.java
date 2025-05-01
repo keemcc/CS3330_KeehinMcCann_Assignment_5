@@ -1,6 +1,7 @@
 package keehinmccann.assignment5.adoptme.shelter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import keehinmccann.assignment5.adoptme.model.pet.Pet;
 
@@ -19,5 +20,9 @@ public class Shelter<T extends Pet> {
 		for (Pet pet: petList) {
 			System.out.println(pet);
 		}
+	}
+	
+	public void sortPets() {
+		Collections.sort(petList);
 	}
 }
