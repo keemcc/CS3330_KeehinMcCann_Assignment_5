@@ -51,4 +51,13 @@ public class StandardPet extends Pet {
 		return id;
 	}
 
+	@Override
+	public boolean adopt() {
+		if (adopted == true) {
+			return false;
+		}
+		adopted = true;
+		return true;
+	}
+
 }

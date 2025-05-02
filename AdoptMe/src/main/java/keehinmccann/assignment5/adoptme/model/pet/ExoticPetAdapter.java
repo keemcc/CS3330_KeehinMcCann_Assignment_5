@@ -38,5 +38,14 @@ public class ExoticPetAdapter extends Pet {
 	public boolean isAdopted() {
 		return adopted;
 	}
+	
+	@Override
+	public boolean adopt() {
+		if (adopted == true) {
+			return false;
+		}
+		adopted = true;
+		return true;
+	}
 
 }
