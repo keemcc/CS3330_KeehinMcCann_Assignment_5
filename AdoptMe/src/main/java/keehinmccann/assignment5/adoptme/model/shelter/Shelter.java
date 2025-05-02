@@ -29,6 +29,14 @@ public class Shelter<T extends Pet> {
 		return false;
 	}
 	
+	public boolean removePet(int index) {
+		if (petList.size() <= index) {
+			return false;
+		}
+		petList.remove(index);
+		return true;
+	}
+	
 	public void printPets() {
 		for (Pet pet: petList) {
 			System.out.println(pet);

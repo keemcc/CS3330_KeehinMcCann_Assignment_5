@@ -27,6 +27,7 @@ public class ShelterController {
 		PetLoader.loadStandardPets(shelterModel);
 		PetLoader.loadExoticPets(shelterModel);
 		shelterListView.addAdoptPetListener(new AdoptPetListener());
+		shelterListView.addRemovePetListener(new RemovePetListener());
 		updateView();
 		shelterListView.setVisible(true);
 	}
@@ -51,6 +52,20 @@ public class ShelterController {
 			}
 			System.out.println(pet);
 			shelterListView.updateView(petList);
+		}
+		
+	}
+	
+	private class RemovePetListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int selectedPetIndex = shelterListView.getSelectedPet();
+			if (selectedPetIndex == -1) {
+				return;
+			}
+			shelterModel.removePet(selectedPetIndex);
+			shelterListView.updateView(shelterModel.getPets());
 		}
 		
 	}
