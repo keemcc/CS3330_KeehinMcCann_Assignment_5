@@ -13,8 +13,9 @@ public class Shelter<T extends Pet> {
 		petList = new ArrayList<T>();
 	}
 	
-	public void addPet(T pet) {
+	public boolean addPet(T pet) {
 		petList.add(pet);
+		return true;
 	}
 	
 	public void printPets() {
@@ -29,5 +30,18 @@ public class Shelter<T extends Pet> {
 	
 	public void sortPets(Comparator<Pet> comparator) {
 		petList.sort(comparator);
+	}
+	
+	public ArrayList<T> getPets() {
+		return petList;
+	}
+	
+	public boolean contains(Pet pet) {
+		for (int i = 0; i < petList.size(); i++) {
+			if (petList.get(i).idEquals(pet)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

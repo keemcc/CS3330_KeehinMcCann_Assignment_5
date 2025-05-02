@@ -8,4 +8,5 @@ public abstract class Pet implements Comparable<Pet>{
 	public abstract boolean isAdopted();
 	public abstract boolean adopt();
 	public abstract String getId();
+	public abstract boolean idEquals(Pet pet);
 }

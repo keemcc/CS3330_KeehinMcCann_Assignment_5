@@ -62,6 +62,14 @@ public class StandardPet extends Pet {
 	}
 	
 	@Override
+	public boolean idEquals(Pet pet) {
+		if (getId() == pet.getId()) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
 	public String toString() {
 	    return ("ID: " + id + " | Name: " + name + " | Type: " + type +
 	    		" | Species: " + species + " | Age: " + age + " | Adopted: " + adopted);

@@ -54,6 +54,14 @@ public class ExoticPetAdapter extends Pet {
 	}
 	
 	@Override
+	public boolean idEquals(Pet pet) {
+		if (getId() == pet.getId()) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
 	public String toString() {
 		return ("ID: " + exoticPet.getUniqueId() +
 				" | Name: " + exoticPet.getAnimalName() +
