@@ -1,4 +1,4 @@
-package keehinmccann.assignment5.adoptme.shelter;
+package keehinmccann.assignment5.adoptme.model.shelter;
 
 import java.util.ArrayList;
 import java.util.Collections;
