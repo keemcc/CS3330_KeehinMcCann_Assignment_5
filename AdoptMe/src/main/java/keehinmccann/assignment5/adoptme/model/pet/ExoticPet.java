@@ -5,6 +5,7 @@ public class ExoticPet {
 	private String animalName;
 	private String category;
 	private String subSpecies;
+	private int yearsOld;
 	public String getUniqueId() {
 		return uniqueId;
 	}
@@ -45,7 +46,6 @@ public class ExoticPet {
 		this.yearsOld = yearsOld;
 	}
 
-	private int yearsOld;
 	
 	public ExoticPet(String uniqueId, String animalName, String category, String subSpecies, int yearsOld) {
 		this.uniqueId = uniqueId;
