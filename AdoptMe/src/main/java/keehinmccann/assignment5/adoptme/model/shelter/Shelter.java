@@ -21,6 +21,14 @@ public class Shelter<T extends Pet> {
 		return true;
 	}
 	
+	public boolean removePet(T pet) {
+		if (this.contains(pet)) {
+			petList.remove(pet);
+			return true;
+		}
+		return false;
+	}
+	
 	public void printPets() {
 		for (Pet pet: petList) {
 			System.out.println(pet);
