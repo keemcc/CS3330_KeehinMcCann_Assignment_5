@@ -49,6 +49,11 @@ public class ExoticPetAdapter extends Pet {
 	}
 	
 	@Override
+	public String getId() {
+		return exoticPet.getUniqueId();
+	}
+	
+	@Override
 	public String toString() {
 		return ("ID: " + exoticPet.getUniqueId() +
 				" | Name: " + exoticPet.getAnimalName() +

@@ -7,4 +7,5 @@ public abstract class Pet implements Comparable<Pet>{
 	public abstract int getAge();
 	public abstract boolean isAdopted();
 	public abstract boolean adopt();
+	public abstract String getId();
 }

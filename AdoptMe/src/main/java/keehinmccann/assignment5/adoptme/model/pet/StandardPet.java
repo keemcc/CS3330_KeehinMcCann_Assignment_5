@@ -46,10 +46,6 @@ public class StandardPet extends Pet {
 	public boolean isAdopted() {
 		return adopted;
 	}
-	
-	public int getId() {
-		return id;
-	}
 
 	@Override
 	public boolean adopt() {
@@ -58,6 +54,11 @@ public class StandardPet extends Pet {
 		}
 		adopted = true;
 		return true;
+	}
+	
+	@Override
+	public String getId() {
+		return Integer.toString(id);
 	}
 	
 	@Override
