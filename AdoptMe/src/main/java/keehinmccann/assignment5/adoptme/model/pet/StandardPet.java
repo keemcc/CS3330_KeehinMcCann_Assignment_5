@@ -1,9 +1,54 @@
 package keehinmccann.assignment5.adoptme.model.pet;
 
 public class StandardPet extends Pet {
+	private int id;
+	private String name;
+	private String type;
+	private String species;
+	private int age;
+	private boolean adopted;
 
 	public StandardPet(int id, String name, String type, String species, int age, boolean adopted) {
-		super(id, name, type, species, age, adopted);
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.species = species;
+        this.age = age;
+        this.adopted = adopted;
+	}
+
+	@Override
+	public int compareTo(Pet o) {
+		return name.compareTo(o.getName());
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String getType() {
+		return type;
+	}
+
+	@Override
+	public String getSpecies() {
+		return species;
+	}
+
+	@Override
+	public int getAge() {
+		return age;
+	}
+
+	@Override
+	public boolean isAdopted() {
+		return adopted;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 }
