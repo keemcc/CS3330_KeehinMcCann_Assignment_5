@@ -1,9 +1,42 @@
 package keehinmccann.assignment5.adoptme.model.pet;
 
 public class ExoticPetAdapter extends Pet {
+	private boolean adopted;
+	private ExoticPet exoticPet;
+	
+	public ExoticPetAdapter(ExoticPet exoticPet) {
+		adopted = false;
+		this.exoticPet = exoticPet;
+	}
 
-	public ExoticPetAdapter(int id, String name, String type, String species, int age, boolean adopted) {
-		super(id, name, type, species, age, adopted);
+	@Override
+	public int compareTo(Pet o) {
+		return exoticPet.getAnimalName().compareTo(o.getName());
+	}
+
+	@Override
+	public String getName() {
+		return exoticPet.getAnimalName();
+	}
+
+	@Override
+	public String getType() {
+		return exoticPet.getCategory();
+	}
+
+	@Override
+	public String getSpecies() {
+		return exoticPet.getSubSpecies();
+	}
+
+	@Override
+	public int getAge() {
+		return exoticPet.getYearsOld();
+	}
+
+	@Override
+	public boolean isAdopted() {
+		return adopted;
 	}
 
 }
