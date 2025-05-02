@@ -14,6 +14,9 @@ public class Shelter<T extends Pet> {
 	}
 	
 	public boolean addPet(T pet) {
+		if (this.contains(pet)) {
+			return false;
+		}
 		petList.add(pet);
 		return true;
 	}
