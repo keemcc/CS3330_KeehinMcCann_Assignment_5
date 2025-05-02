@@ -2,6 +2,7 @@ package keehinmccann.assignment5.adoptme.model.shelter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import keehinmccann.assignment5.adoptme.model.pet.Pet;
 
@@ -24,5 +25,9 @@ public class Shelter<T extends Pet> {
 	
 	public void sortPets() {
 		Collections.sort(petList);
+	}
+	
+	public void sortPets(Comparator<Pet> comparator) {
+		petList.sort(comparator);
 	}
 }
