@@ -59,5 +59,11 @@ public class StandardPet extends Pet {
 		adopted = true;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+	    return ("ID: " + id + " | Name: " + name + " | Type: " + type +
+	    		" | Species: " + species + " | Age: " + age + " | Adopted: " + adopted);
+	}
 
 }

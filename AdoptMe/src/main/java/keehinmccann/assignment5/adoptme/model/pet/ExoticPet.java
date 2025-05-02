@@ -6,6 +6,15 @@ public class ExoticPet {
 	private String category;
 	private String subSpecies;
 	private int yearsOld;
+	
+	public ExoticPet(String uniqueId, String animalName, String category, String subSpecies, int yearsOld) {
+		this.uniqueId = uniqueId;
+		this.animalName = animalName;
+		this.category = category;
+		this.subSpecies = subSpecies;
+		this.yearsOld = yearsOld;
+	}
+	
 	public String getUniqueId() {
 		return uniqueId;
 	}
@@ -47,11 +56,4 @@ public class ExoticPet {
 	}
 
 	
-	public ExoticPet(String uniqueId, String animalName, String category, String subSpecies, int yearsOld) {
-		this.uniqueId = uniqueId;
-		this.animalName = animalName;
-		this.category = category;
-		this.subSpecies = subSpecies;
-		this.yearsOld = yearsOld;
-	}
 }
