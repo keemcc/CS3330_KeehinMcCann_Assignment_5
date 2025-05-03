@@ -53,7 +53,7 @@ public class ShelterListView extends JFrame {
 	private JButton removePetButton;
 	private JButton viewPetButton;
 	private JButton savePetListButton;
-	private JComboBox sortComboBox = new JComboBox();
+	private JComboBox<String> sortComboBox = new JComboBox<String>();
 	public ShelterListView() {
 		setTitle("Pet Shelter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,8 +93,11 @@ public class ShelterListView extends JFrame {
 		savePetListButton.setBounds(785, 9, 109, 23);
 		contentPane.add(savePetListButton);
 		
-		sortComboBox = new JComboBox();
+		sortComboBox = new JComboBox<String>();
 		sortComboBox.setToolTipText("Sort By...");
+		sortComboBox.addItem("Default");
+		sortComboBox.addItem("Age");
+		sortComboBox.addItem("Species");
 		sortComboBox.setBounds(20, 500, 99, 22);
 		contentPane.add(sortComboBox);
 	}
@@ -127,5 +130,8 @@ public class ShelterListView extends JFrame {
 	
 	public int getSelectedPet() {
 		return list.getSelectedIndex();
+	}
+	public int getSelectedSortingOption() {
+		return sortComboBox.getSelectedIndex();
 	}
 }

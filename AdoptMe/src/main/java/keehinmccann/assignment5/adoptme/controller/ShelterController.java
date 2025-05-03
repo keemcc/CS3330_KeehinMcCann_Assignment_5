@@ -28,6 +28,7 @@ public class ShelterController {
 		PetLoader.loadExoticPets(shelterModel);
 		shelterListView.addAdoptPetListener(new AdoptPetListener());
 		shelterListView.addRemovePetListener(new RemovePetListener());
+		shelterListView.addSortComboBoxListener(new SortComboBoxListener());
 		updateView();
 		shelterListView.setVisible(true);
 	}
@@ -65,6 +66,29 @@ public class ShelterController {
 				return;
 			}
 			shelterModel.removePet(selectedPetIndex);
+			shelterListView.updateView(shelterModel.getPets());
+		}
+		
+	}
+	
+	private class SortComboBoxListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println(shelterListView.getSelectedSortingOption());
+			switch (shelterListView.getSelectedSortingOption()) {
+			case 0:
+				shelterModel.sortPets();
+				break;
+			case 1:
+				shelterModel.sortPets(new AgeComparator());
+				break;
+			case 2:
+				shelterModel.sortPets(new SpeciesComparator());
+				break;
+			default:
+				break;
+			}
 			shelterListView.updateView(shelterModel.getPets());
 		}
 		
