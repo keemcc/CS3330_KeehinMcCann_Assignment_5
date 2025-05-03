@@ -2,7 +2,6 @@ package keehinmccann.assignment5.adoptme.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import keehinmccann.assignment5.adoptme.controller.inputvalidation.ValidateUserInput;
 import keehinmccann.assignment5.adoptme.model.filehandling.PetLoader;
@@ -124,22 +123,30 @@ public class ShelterController {
 				return;
 			}
 			shelterModel.removePet(selectedPetIndex);
-			shelterListView.updateView(shelterModel.getPets());
+			updateView();
 		}
 		
 	}
 	
+	/**
+	 * Action Listener for the sorting combo box
+	 * Whenever the combo box is changed, updates sorting of model and updates view
+	 */
 	private class SortComboBoxListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(shelterListView.getSelectedSortingOption());
 			updatePetSorting();
-			shelterListView.updateView(shelterModel.getPets());
+			updateView();
 		}
 		
 	}
 	
+	/**
+	 * Action Listener for add pet button
+	 * Creates a new AddPetView and sets the submit button listener
+	 */
 	private class AddPetListener implements ActionListener {
 
 		@Override
@@ -151,6 +158,13 @@ public class ShelterController {
 		
 	}
 	
+	/**
+	 * Action Listener for submit button inside AddPetView
+	 * Validates each field and displays an error dialog if one is invalid
+	 * After all input is validated, creates the pet and checks if the id already exists
+	 * If it does, display an error
+	 * If not, add the pet to the view, update the sorting, and update the view
+	 */
 	private class SubmitListener implements ActionListener {
 
 		@Override
@@ -188,11 +202,17 @@ public class ShelterController {
 			}
 			addPetView.dispose();
 			updatePetSorting();
-			shelterListView.updateView(shelterModel.getPets());
+			updateView();
 		}
 		
 	}
 	
+	/**
+	 * Action Listener for the view pet details button
+	 * Displays an error if no pet is selected
+	 * Gets all of the pet data for the selected pet and displays it
+	 * in a new PetDetailsView
+	 */
 	private class ViewPetListener implements ActionListener {
 
 		@Override
@@ -216,6 +236,10 @@ public class ShelterController {
 		
 	}
 	
+	/**
+	 * Action Listener for the save pet list button
+	 * Creates a dialog saying success if it was successful, or error while saving if it wasn't
+	 */
 	private class SavePetListListener implements ActionListener {
 
 		@Override
