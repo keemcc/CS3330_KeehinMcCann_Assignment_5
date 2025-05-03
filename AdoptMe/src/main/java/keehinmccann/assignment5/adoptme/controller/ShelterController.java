@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
-
 import keehinmccann.assignment5.adoptme.controller.inputvalidation.ValidateUserInput;
 import keehinmccann.assignment5.adoptme.model.filehandling.PetLoader;
 import keehinmccann.assignment5.adoptme.model.pet.Pet;
@@ -13,8 +11,8 @@ import keehinmccann.assignment5.adoptme.model.pet.comparators.AgeComparator;
 import keehinmccann.assignment5.adoptme.model.pet.comparators.SpeciesComparator;
 import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
 import keehinmccann.assignment5.adoptme.view.AddPetView;
-import keehinmccann.assignment5.adoptme.view.PetAlreadyAdoptedDialog;
 import keehinmccann.assignment5.adoptme.view.ShelterListView;
+import keehinmccann.assignment5.adoptme.view.errors.PetAlreadyAdoptedDialog;
 
 public class ShelterController {
 	private Shelter<Pet> shelterModel;

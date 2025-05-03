@@ -1,4 +1,4 @@
-package keehinmccann.assignment5.adoptme.view;
+package keehinmccann.assignment5.adoptme.view.errors;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
