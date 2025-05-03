@@ -19,20 +19,7 @@ public class PetAlreadyAdoptedDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	JButton okButton;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			PetAlreadyAdoptedDialog dialog = new PetAlreadyAdoptedDialog();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private JButton okButton;
 
 	/**
 	 * Create the dialog.

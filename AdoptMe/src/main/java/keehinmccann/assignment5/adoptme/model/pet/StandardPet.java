@@ -71,8 +71,7 @@ public class StandardPet extends Pet {
 	
 	@Override
 	public String toString() {
-	    return ("ID: " + id + " | Name: " + name + " | Type: " + type +
-	    		" | Species: " + species + " | Age: " + age + " | Adopted: " + adopted);
+	    return (name + " | Type: " + type + " | Species: " + species + " | Age: " + age + ((adopted) ? " | Adopted!" : ""));
 	}
 
 }

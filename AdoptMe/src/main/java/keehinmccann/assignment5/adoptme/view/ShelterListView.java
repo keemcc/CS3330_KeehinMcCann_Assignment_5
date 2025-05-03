@@ -57,7 +57,7 @@ public class ShelterListView extends JFrame {
 	public ShelterListView() {
 		setTitle("Pet Shelter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 920, 570);
+		setBounds(100, 100, 757, 570);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -65,7 +65,7 @@ public class ShelterListView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 43, 884, 446);
+		scrollPane.setBounds(10, 43, 718, 446);
 		contentPane.add(scrollPane);
 		
 		list = new JList<Pet>(shelterListModel);
@@ -75,7 +75,7 @@ public class ShelterListView extends JFrame {
 		scrollPane.setViewportView(list);
 		
 		addPetButton = new JButton("Add New Pet");
-		addPetButton.setBounds(764, 497, 130, 23);
+		addPetButton.setBounds(598, 500, 130, 23);
 		contentPane.add(addPetButton);
 		
 		adoptPetButton = new JButton("Adopt Pet");
@@ -87,19 +87,19 @@ public class ShelterListView extends JFrame {
 		contentPane.add(removePetButton);
 		
 		viewPetButton = new JButton("View Pet Details");
-		viewPetButton.setBounds(278, 9, 119, 23);
+		viewPetButton.setBounds(278, 9, 137, 23);
 		contentPane.add(viewPetButton);
 		
 		savePetListButton = new JButton("Save Pet List");
-		savePetListButton.setBounds(785, 9, 109, 23);
+		savePetListButton.setBounds(619, 9, 109, 23);
 		contentPane.add(savePetListButton);
 		
 		sortComboBox = new JComboBox<String>();
+		sortComboBox.setBounds(10, 500, 118, 22);
 		sortComboBox.setToolTipText("Sort By...");
 		sortComboBox.addItem("Name");
 		sortComboBox.addItem("Age");
 		sortComboBox.addItem("Species");
-		sortComboBox.setBounds(20, 500, 99, 22);
 		contentPane.add(sortComboBox);
 	}
 	

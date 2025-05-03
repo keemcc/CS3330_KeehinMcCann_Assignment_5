@@ -63,12 +63,11 @@ public class ExoticPetAdapter extends Pet {
 	
 	@Override
 	public String toString() {
-		return ("ID: " + exoticPet.getUniqueId() +
-				" | Name: " + exoticPet.getAnimalName() +
-				" | Type: " + exoticPet.getCategory() +
-				" | Species: " + exoticPet.getSubSpecies() +
-				" | Age: " + exoticPet.getYearsOld() +
-				" | Adopted: " + adopted);
+		return (exoticPet.getAnimalName() + 
+				" | Type: " + exoticPet.getCategory() + 
+				" | Species: " + exoticPet.getSubSpecies() + 
+				" | Age: " + exoticPet.getYearsOld() + ((adopted) ? 
+				" | Adopted!" : ""));
 	}
 
 }

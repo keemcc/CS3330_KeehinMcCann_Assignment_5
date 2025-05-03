@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
-public class AddPetErrorDialog extends JDialog {
+public class PetErrorDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -21,7 +21,7 @@ public class AddPetErrorDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public AddPetErrorDialog(String message) {
+	public PetErrorDialog(String message) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

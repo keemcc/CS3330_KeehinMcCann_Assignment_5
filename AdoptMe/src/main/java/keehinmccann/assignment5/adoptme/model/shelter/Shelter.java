@@ -75,4 +75,11 @@ public class Shelter<T extends Pet> {
 		}
 		return false;
 	}
+
+	public Pet getPet(int petIndex) {
+		if (petIndex >= petList.size()) {
+			return null;
+		}
+		return petList.get(petIndex);
+	}
 }

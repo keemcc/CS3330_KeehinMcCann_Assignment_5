@@ -11,8 +11,9 @@ import keehinmccann.assignment5.adoptme.model.pet.comparators.AgeComparator;
 import keehinmccann.assignment5.adoptme.model.pet.comparators.SpeciesComparator;
 import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
 import keehinmccann.assignment5.adoptme.view.AddPetView;
+import keehinmccann.assignment5.adoptme.view.PetDetailsView;
 import keehinmccann.assignment5.adoptme.view.ShelterListView;
-import keehinmccann.assignment5.adoptme.view.errors.AddPetErrorDialog;
+import keehinmccann.assignment5.adoptme.view.errors.PetErrorDialog;
 import keehinmccann.assignment5.adoptme.view.errors.PetAlreadyAdoptedDialog;
 
 public class ShelterController {
@@ -32,6 +33,7 @@ public class ShelterController {
 		shelterListView.addRemovePetListener(new RemovePetListener());
 		shelterListView.addSortComboBoxListener(new SortComboBoxListener());
 		shelterListView.addAddPetListener(new AddPetListener());
+		shelterListView.addViewPetListener(new ViewPetListener());
 		updatePetSorting();
 		updateView();
 		shelterListView.setVisible(true);
@@ -63,6 +65,7 @@ public class ShelterController {
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = shelterListView.getSelectedPet();
 			if (selectedPetIndex == -1) {
+				new PetErrorDialog("You must select a pet").setVisible(true);
 				return;
 			}
 			ArrayList<Pet> petList = shelterModel.getPets();
@@ -83,6 +86,7 @@ public class ShelterController {
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = shelterListView.getSelectedPet();
 			if (selectedPetIndex == -1) {
+				new PetErrorDialog("You must select a pet").setVisible(true);
 				return;
 			}
 			shelterModel.removePet(selectedPetIndex);
@@ -118,39 +122,62 @@ public class ShelterController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (!ValidateUserInput.validateInputInteger(addPetView.getIdText())) {
-				new AddPetErrorDialog("Pet ID Integer provided was invalid or empty").setVisible(true);
+				new PetErrorDialog("Pet ID Integer provided was invalid or empty").setVisible(true);
 				return;
 			}
 			int id = Integer.parseInt(addPetView.getIdText());
 			if (!ValidateUserInput.validateInputNotNull(addPetView.getNameText())) {
-				new AddPetErrorDialog("Name field was empty").setVisible(true);
+				new PetErrorDialog("Name field was empty").setVisible(true);
 				return;
 			}
 			String name = addPetView.getNameText();
 			if (!ValidateUserInput.validateInputNotNull(addPetView.getTypeText())) {
-				new AddPetErrorDialog("Type field was empty").setVisible(true);
+				new PetErrorDialog("Type field was empty").setVisible(true);
 				return;
 			}
 			String type = addPetView.getTypeText();
 			if (!ValidateUserInput.validateInputNotNull(addPetView.getSpeciesText())) {
-				new AddPetErrorDialog("Species field was empty").setVisible(true);
+				new PetErrorDialog("Species field was empty").setVisible(true);
 				return;
 			}
 			String species = addPetView.getSpeciesText();
 			if (!ValidateUserInput.validateInputInteger(addPetView.getAgeText())) {
-				new AddPetErrorDialog("Age integer provided was invalid or empty").setVisible(true);
+				new PetErrorDialog("Age integer provided was invalid or empty").setVisible(true);
 				return;
 			}
 			int age = Integer.parseInt(addPetView.getAgeText());
 			boolean adopted = addPetView.getAdoptedCheckBox();
 			Pet pet = shelterModel.createPet(id, name, type, species, age, adopted);
 			if (!shelterModel.addPet(pet)) {
-				new AddPetErrorDialog("Pet with given ID already exists").setVisible(true);
+				new PetErrorDialog("Pet with given ID already exists").setVisible(true);
 				return;
 			}
 			addPetView.dispose();
 			updatePetSorting();
 			shelterListView.updateView(shelterModel.getPets());
+		}
+		
+	}
+	
+	private class ViewPetListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int selectedPetIndex = shelterListView.getSelectedPet();
+			if (selectedPetIndex < 0) {
+				new PetErrorDialog("You must select a pet").setVisible(true);
+				return;
+			}
+			Pet pet = shelterModel.getPet(selectedPetIndex);
+			String id = pet.getId();
+			String name = pet.getName();
+			String type = pet.getType();
+			String species = pet.getSpecies();
+			String age = Integer.toString(pet.getAge());
+			String adopted = (pet.isAdopted()) ? "Yes" : "No";
+			PetDetailsView view = new PetDetailsView();
+			view.setPetTextFields(id, name, type, species, age, adopted);
+			view.setVisible(true);
 		}
 		
 	}
