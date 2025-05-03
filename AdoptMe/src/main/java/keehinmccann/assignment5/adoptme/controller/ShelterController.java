@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import keehinmccann.assignment5.adoptme.controller.inputvalidation.ValidateUserInput;
 import keehinmccann.assignment5.adoptme.model.filehandling.PetLoader;
+import keehinmccann.assignment5.adoptme.model.filehandling.PetSaver;
 import keehinmccann.assignment5.adoptme.model.pet.Pet;
 import keehinmccann.assignment5.adoptme.model.pet.comparators.AgeComparator;
 import keehinmccann.assignment5.adoptme.model.pet.comparators.SpeciesComparator;
@@ -34,6 +35,7 @@ public class ShelterController {
 		shelterListView.addSortComboBoxListener(new SortComboBoxListener());
 		shelterListView.addAddPetListener(new AddPetListener());
 		shelterListView.addViewPetListener(new ViewPetListener());
+		shelterListView.addSavePetListListener(new SavePetListListener());
 		updatePetSorting();
 		updateView();
 		shelterListView.setVisible(true);
@@ -178,6 +180,21 @@ public class ShelterController {
 			PetDetailsView view = new PetDetailsView();
 			view.setPetTextFields(id, name, type, species, age, adopted);
 			view.setVisible(true);
+		}
+		
+	}
+	
+	private class SavePetListListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			boolean success = PetSaver.saveShelter(shelterModel);
+			if (success) {
+				new PetErrorDialog("Success").setVisible(true);
+			} else {
+				new PetErrorDialog("Error While Saving").setVisible(true);
+			}
+			return;
 		}
 		
 	}
