@@ -25,20 +25,22 @@ public class PetAlertDialog extends JDialog {
 	 */
 	public PetAlertDialog(String message) {
 		setTitle("Alert");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 233);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			errorMessageLabel.setBounds(77, 81, 280, 50);
+			errorMessageLabel.setBounds(67, 56, 280, 50);
 			errorMessageLabel.setText(message);
 			contentPanel.add(errorMessageLabel);
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBounds(0, 161, 434, 33);
+			contentPanel.add(buttonPane);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				okButton = new JButton("OK");
 				okButton.setActionCommand("OK");
