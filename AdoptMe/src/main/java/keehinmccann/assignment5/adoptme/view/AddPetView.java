@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class AddPetView extends JFrame {
 
@@ -55,8 +56,8 @@ public class AddPetView extends JFrame {
 	 */
 	public AddPetView() {
 		setTitle("Add Pet Menu");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 859, 449);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 396, 449);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -64,52 +65,58 @@ public class AddPetView extends JFrame {
 		contentPane.setLayout(null);
 		
 		petIdTextField = new JTextField();
-		petIdTextField.setBounds(301, 41, 241, 20);
+		petIdTextField.setBounds(98, 33, 241, 20);
 		contentPane.add(petIdTextField);
 		petIdTextField.setColumns(10);
 		
 		petNameTextField = new JTextField();
 		petNameTextField.setColumns(10);
-		petNameTextField.setBounds(301, 102, 241, 20);
+		petNameTextField.setBounds(98, 86, 241, 20);
 		contentPane.add(petNameTextField);
 		
 		petTypeTextField = new JTextField();
 		petTypeTextField.setColumns(10);
-		petTypeTextField.setBounds(301, 163, 241, 20);
+		petTypeTextField.setBounds(98, 139, 241, 20);
 		contentPane.add(petTypeTextField);
 		
 		petSpeciesTextField = new JTextField();
 		petSpeciesTextField.setColumns(10);
-		petSpeciesTextField.setBounds(301, 224, 241, 20);
+		petSpeciesTextField.setBounds(98, 192, 241, 20);
 		contentPane.add(petSpeciesTextField);
 		
 		petAgeTextField = new JTextField();
 		petAgeTextField.setColumns(10);
-		petAgeTextField.setBounds(301, 285, 241, 20);
+		petAgeTextField.setBounds(98, 245, 241, 20);
 		contentPane.add(petAgeTextField);
 		
 		adoptedCheckBox = new JCheckBox("Pet is adopted?");
-		adoptedCheckBox.setBounds(367, 323, 125, 23);
+		adoptedCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+		adoptedCheckBox.setBounds(127, 298, 125, 23);
 		contentPane.add(adoptedCheckBox);
 		
 		petIdLabel = new JLabel("Pet ID Integer:");
-		petIdLabel.setBounds(212, 44, 84, 14);
+		petIdLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		petIdLabel.setBounds(11, 36, 84, 14);
 		contentPane.add(petIdLabel);
 		
 		petNameLabel = new JLabel("Name:");
-		petNameLabel.setBounds(255, 105, 41, 14);
+		petNameLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		petNameLabel.setBounds(54, 89, 41, 14);
 		contentPane.add(petNameLabel);
 		
 		petTypeLabel = new JLabel("Type:");
-		petTypeLabel.setBounds(255, 166, 41, 14);
+		petTypeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		petTypeLabel.setBounds(54, 142, 41, 14);
 		contentPane.add(petTypeLabel);
 		
 		petSpeciesLabel = new JLabel("Species:");
-		petSpeciesLabel.setBounds(242, 227, 54, 14);
+		petSpeciesLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		petSpeciesLabel.setBounds(41, 195, 54, 14);
 		contentPane.add(petSpeciesLabel);
 		
 		petAgeLabel = new JLabel("Age:");
-		petAgeLabel.setBounds(255, 288, 41, 14);
+		petAgeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		petAgeLabel.setBounds(54, 248, 41, 14);
 		contentPane.add(petAgeLabel);
 		
 		submitButton = new JButton("Submit");
@@ -117,7 +124,7 @@ public class AddPetView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		submitButton.setBounds(377, 365, 89, 23);
+		submitButton.setBounds(145, 354, 89, 23);
 		contentPane.add(submitButton);
 	}
 	

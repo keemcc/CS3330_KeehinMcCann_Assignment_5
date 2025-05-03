@@ -69,6 +69,7 @@ public class ShelterListView extends JFrame {
 		contentPane.add(scrollPane);
 		
 		list = new JList<Pet>(shelterListModel);
+		list.setBackground(new Color(255, 255, 255));
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		scrollPane.setViewportView(list);
@@ -95,7 +96,7 @@ public class ShelterListView extends JFrame {
 		
 		sortComboBox = new JComboBox<String>();
 		sortComboBox.setToolTipText("Sort By...");
-		sortComboBox.addItem("Default");
+		sortComboBox.addItem("Name");
 		sortComboBox.addItem("Age");
 		sortComboBox.addItem("Species");
 		sortComboBox.setBounds(20, 500, 99, 22);

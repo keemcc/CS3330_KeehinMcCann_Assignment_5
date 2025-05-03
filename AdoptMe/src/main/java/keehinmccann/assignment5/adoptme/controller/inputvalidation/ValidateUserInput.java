@@ -2,7 +2,7 @@ package keehinmccann.assignment5.adoptme.controller.inputvalidation;
 
 public class ValidateUserInput {
 	public static boolean validateInputNotNull(String input) {
-		if (input == null) {
+		if (input == null || input.equals("")) {
 			return false;
 		}
 		return true;
