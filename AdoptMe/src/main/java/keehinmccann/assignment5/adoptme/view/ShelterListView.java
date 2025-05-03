@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  * Main view for the shelter application,
@@ -78,12 +80,17 @@ public class ShelterListView extends JFrame {
 		contentPane.add(savePetListButton);
 		
 		sortComboBox = new JComboBox<String>();
-		sortComboBox.setBounds(10, 500, 118, 22);
+		sortComboBox.setBounds(65, 500, 118, 22);
 		sortComboBox.setToolTipText("Sort By...");
 		sortComboBox.addItem("Name");
 		sortComboBox.addItem("Age");
 		sortComboBox.addItem("Species");
 		contentPane.add(sortComboBox);
+		
+		JLabel sortByLabel = new JLabel("Sort By:");
+		sortByLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		sortByLabel.setBounds(0, 504, 56, 14);
+		contentPane.add(sortByLabel);
 	}
 	
 	/**
@@ -153,5 +160,4 @@ public class ShelterListView extends JFrame {
 	public void addSortComboBoxListener(ActionListener listener) {
 		sortComboBox.addActionListener(listener);
 	}
-	
 }
