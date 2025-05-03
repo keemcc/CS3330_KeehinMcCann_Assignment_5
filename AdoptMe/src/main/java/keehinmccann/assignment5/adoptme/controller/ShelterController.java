@@ -15,18 +15,35 @@ import keehinmccann.assignment5.adoptme.view.AddPetView;
 import keehinmccann.assignment5.adoptme.view.PetDetailsView;
 import keehinmccann.assignment5.adoptme.view.ShelterListView;
 import keehinmccann.assignment5.adoptme.view.errors.PetErrorDialog;
-import keehinmccann.assignment5.adoptme.view.errors.PetAlreadyAdoptedDialog;
 
+/**
+ * Controller class for following MVC Architecture,
+ * Handles Creation of view and contact between view and model
+ * Also handles logic behind view button presses
+ */
 public class ShelterController {
 	private Shelter<Pet> shelterModel;
 	private ShelterListView shelterListView;
 	private AddPetView addPetView;
 	
+	/**
+	 * Creates the shelterController with the passed model and view
+	 * @param model shelter model
+	 * @param view shelter list view
+	 */
 	public ShelterController(Shelter<Pet> model, ShelterListView view) {
 		shelterModel = model;
 		shelterListView = view;
 	}
 	
+	/**
+	 * Initializes the shelter by
+	 * loading all pets
+	 * Adding listeners to buttons and combo box in view
+	 * updating the pets to be sorted by default combo box option
+	 * updating list view to display sorted pets
+	 * setting view to be visible
+	 */
 	public void initiate() {
 		PetLoader.loadStandardPets(shelterModel);
 		PetLoader.loadExoticPets(shelterModel);
@@ -41,10 +58,17 @@ public class ShelterController {
 		shelterListView.setVisible(true);
 	}
 	
+	/**
+	 * Method to update the shelter view using the shelter model
+	 */
 	public void updateView() {
 		shelterListView.updateView(shelterModel.getPets());
 	}
 	
+	/**
+	 * Updates the pet sorting based on the selected combo box option
+	 * Does not update the view
+	 */
 	private void updatePetSorting() {
 		switch (shelterListView.getSelectedSortingOption()) {
 		case 0:
@@ -61,6 +85,12 @@ public class ShelterController {
 		}
 	}
 	
+	/**
+	 * Action Listener for the adopt pet button
+	 * Provides an error dialog if no pet is selected,
+	 * Provides an error if the pet is already adopted,
+	 * or adopts the pet and updates the view to display it
+	 */
 	private class AdoptPetListener implements ActionListener {
 
 		@Override
@@ -73,15 +103,19 @@ public class ShelterController {
 			ArrayList<Pet> petList = shelterModel.getPets();
 			Pet pet = petList.get(selectedPetIndex);
 			if (!pet.adopt()) {
-				new PetAlreadyAdoptedDialog().setVisible(true);
+				new PetErrorDialog("This pet has already been adopted.").setVisible(true);
 				return;
 			}
-			System.out.println(pet);
 			shelterListView.updateView(petList);
 		}
 		
 	}
 	
+	/**
+	 * Action Listener for the remove pet button
+	 * Provides an error dialog if no pet is selected or
+	 * removes pet from shelter and updates view
+	 */
 	private class RemovePetListener implements ActionListener {
 
 		@Override

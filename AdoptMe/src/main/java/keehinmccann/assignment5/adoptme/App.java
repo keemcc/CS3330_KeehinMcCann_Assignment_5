@@ -10,6 +10,9 @@ import keehinmccann.assignment5.adoptme.model.pet.comparators.AgeComparator;
 import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
 import keehinmccann.assignment5.adoptme.view.ShelterListView;
 
+/**
+ * Main file for application to run
+ */
 public class App {
   public static void main(String[] args) {
 	  ShelterController controller = new ShelterController(new Shelter<Pet>(), new ShelterListView());
