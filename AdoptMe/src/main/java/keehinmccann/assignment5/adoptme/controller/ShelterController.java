@@ -150,6 +150,9 @@ public class ShelterController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (addPetView != null) {
+				return;
+			}
 			addPetView = new AddPetView();
 			addPetView.setVisible(true);
 			addPetView.addSubmitButtonListener(new SubmitListener());
