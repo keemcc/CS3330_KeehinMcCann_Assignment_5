@@ -2,7 +2,6 @@ package keehinmccann.assignment5.adoptme.view.errors;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -10,7 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
-public class PetErrorDialog extends JDialog {
+/**
+ * View for any alert that needs to be displayed to the user
+ */
+public class PetAlertDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -19,9 +21,10 @@ public class PetErrorDialog extends JDialog {
 
 
 	/**
-	 * Create the dialog.
+	 * Create the dialog with the passed message
 	 */
-	public PetErrorDialog(String message) {
+	public PetAlertDialog(String message) {
+		setTitle("Alert");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

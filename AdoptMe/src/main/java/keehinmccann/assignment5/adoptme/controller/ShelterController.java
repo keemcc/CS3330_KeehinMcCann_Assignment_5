@@ -13,7 +13,7 @@ import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
 import keehinmccann.assignment5.adoptme.view.AddPetView;
 import keehinmccann.assignment5.adoptme.view.PetDetailsView;
 import keehinmccann.assignment5.adoptme.view.ShelterListView;
-import keehinmccann.assignment5.adoptme.view.errors.PetErrorDialog;
+import keehinmccann.assignment5.adoptme.view.errors.PetAlertDialog;
 
 /**
  * Controller class for following MVC Architecture,
@@ -96,11 +96,11 @@ public class ShelterController {
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = shelterListView.getSelectedPet();
 			if (selectedPetIndex == -1) {
-				new PetErrorDialog("You must select a pet").setVisible(true);
+				new PetAlertDialog("You must select a pet").setVisible(true);
 				return;
 			}
 			if (!shelterModel.adoptPet(selectedPetIndex)) {
-				new PetErrorDialog("This pet has already been adopted.").setVisible(true);
+				new PetAlertDialog("This pet has already been adopted.").setVisible(true);
 				return;
 			}
 			updateView();
@@ -119,7 +119,7 @@ public class ShelterController {
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = shelterListView.getSelectedPet();
 			if (selectedPetIndex == -1) {
-				new PetErrorDialog("You must select a pet").setVisible(true);
+				new PetAlertDialog("You must select a pet").setVisible(true);
 				return;
 			}
 			shelterModel.removePet(selectedPetIndex);
@@ -136,7 +136,6 @@ public class ShelterController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(shelterListView.getSelectedSortingOption());
 			updatePetSorting();
 			updateView();
 		}
@@ -170,34 +169,34 @@ public class ShelterController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (!ValidateUserInput.validateInputInteger(addPetView.getIdText())) {
-				new PetErrorDialog("Pet ID Integer provided was invalid or empty").setVisible(true);
+				new PetAlertDialog("Pet ID Integer provided was invalid or empty").setVisible(true);
 				return;
 			}
 			int id = Integer.parseInt(addPetView.getIdText());
 			if (!ValidateUserInput.validateInputNotNull(addPetView.getNameText())) {
-				new PetErrorDialog("Name field was empty").setVisible(true);
+				new PetAlertDialog("Name field was empty").setVisible(true);
 				return;
 			}
 			String name = addPetView.getNameText();
 			if (!ValidateUserInput.validateInputNotNull(addPetView.getTypeText())) {
-				new PetErrorDialog("Type field was empty").setVisible(true);
+				new PetAlertDialog("Type field was empty").setVisible(true);
 				return;
 			}
 			String type = addPetView.getTypeText();
 			if (!ValidateUserInput.validateInputNotNull(addPetView.getSpeciesText())) {
-				new PetErrorDialog("Species field was empty").setVisible(true);
+				new PetAlertDialog("Species field was empty").setVisible(true);
 				return;
 			}
 			String species = addPetView.getSpeciesText();
 			if (!ValidateUserInput.validateInputInteger(addPetView.getAgeText())) {
-				new PetErrorDialog("Age integer provided was invalid or empty").setVisible(true);
+				new PetAlertDialog("Age integer provided was invalid or empty").setVisible(true);
 				return;
 			}
 			int age = Integer.parseInt(addPetView.getAgeText());
 			boolean adopted = addPetView.getAdoptedCheckBox();
 			Pet pet = shelterModel.createPet(id, name, type, species, age, adopted);
 			if (!shelterModel.addPet(pet)) {
-				new PetErrorDialog("Pet with given ID already exists").setVisible(true);
+				new PetAlertDialog("Pet with given ID already exists").setVisible(true);
 				return;
 			}
 			addPetView.dispose();
@@ -219,7 +218,7 @@ public class ShelterController {
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = shelterListView.getSelectedPet();
 			if (selectedPetIndex < 0) {
-				new PetErrorDialog("You must select a pet").setVisible(true);
+				new PetAlertDialog("You must select a pet").setVisible(true);
 				return;
 			}
 			Pet pet = shelterModel.getPet(selectedPetIndex);
@@ -246,9 +245,9 @@ public class ShelterController {
 		public void actionPerformed(ActionEvent e) {
 			boolean success = PetSaver.saveShelter(shelterModel);
 			if (success) {
-				new PetErrorDialog("Success").setVisible(true);
+				new PetAlertDialog("Success").setVisible(true);
 			} else {
-				new PetErrorDialog("Error While Saving").setVisible(true);
+				new PetAlertDialog("Error While Saving").setVisible(true);
 			}
 			return;
 		}

@@ -1,16 +1,10 @@
 package keehinmccann.assignment5.adoptme.view;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -18,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+/**
+ * View for the add pet screen, contains fields for text entry for all pet values and checkbox for adopted status
+ */
 public class AddPetView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -34,22 +31,6 @@ public class AddPetView extends JFrame {
 	private JLabel petAgeLabel;
 	private JButton submitButton;
 	private JCheckBox adoptedCheckBox;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddPetView frame = new AddPetView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -128,9 +109,17 @@ public class AddPetView extends JFrame {
 		contentPane.add(submitButton);
 	}
 	
+	/**
+	 * Adds the passed listener to the submit button
+	 * @param listener
+	 */
 	public void addSubmitButtonListener(ActionListener listener) {
 		submitButton.addActionListener(listener);
 	}
+	/**
+	 * Returns the id text within the field, or null if there is no text
+	 * @return
+	 */
 	public String getIdText() {
 		try {
 			String text = petIdTextField.getText();
@@ -139,6 +128,10 @@ public class AddPetView extends JFrame {
 			return null;
 		}
 	}
+	/**
+	 * Returns the name text within the field, or null if there is no text
+	 * @return
+	 */
 	public String getNameText() {
 		try {
 			String text = petNameTextField.getText();
@@ -147,6 +140,10 @@ public class AddPetView extends JFrame {
 			return null;
 		}
 	}
+	/**
+	 * Returns the type text within the field, or null if there is no text
+	 * @return
+	 */
 	public String getTypeText() {
 		try {
 			String text = petTypeTextField.getText();
@@ -155,6 +152,10 @@ public class AddPetView extends JFrame {
 			return null;
 		}
 	}
+	/**
+	 * Returns the age text within the field, or null if there is no text
+	 * @return
+	 */
 	public String getAgeText() {
 		try {
 			String text = petAgeTextField.getText();
@@ -163,6 +164,10 @@ public class AddPetView extends JFrame {
 			return null;
 		}
 	}
+	/**
+	 * Returns the species text within the field, or null if there is no text
+	 * @return
+	 */
 	public String getSpeciesText() {
 		try {
 			String text = petSpeciesTextField.getText();
@@ -171,6 +176,10 @@ public class AddPetView extends JFrame {
 			return null;
 		}
 	}
+	/**
+	 * Returns true if the adopted checkbox is selected, or false if it is unselected
+	 * @return
+	 */
 	public boolean getAdoptedCheckBox() {
 		return adoptedCheckBox.isSelected();
 	}

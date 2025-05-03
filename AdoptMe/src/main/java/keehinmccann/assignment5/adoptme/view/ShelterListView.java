@@ -12,16 +12,16 @@ import keehinmccann.assignment5.adoptme.model.pet.Pet;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 import java.awt.Color;
 
+/**
+ * Main view for the shelter application,
+ * Displays the list of all pets within the shelter and has buttons for related operations
+ */
 public class ShelterListView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -46,7 +46,7 @@ public class ShelterListView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private JList list;
+	private JList<Pet> list;
 	private DefaultListModel<Pet> shelterListModel = new DefaultListModel<>();
 	private JButton addPetButton;
 	private JButton adoptPetButton;
@@ -103,36 +103,72 @@ public class ShelterListView extends JFrame {
 		contentPane.add(sortComboBox);
 	}
 	
+	/**
+	 * Updates the view with the passed pets arraylist
+	 * @param pets
+	 */
 	public void updateView(ArrayList<Pet> pets) {
 		shelterListModel.clear();
 		for (Pet pet : pets) {
 			shelterListModel.addElement(pet);
 		}
 	}
+	/**
+	 * Returns the index of the pet that is currently highlighted
+	 * @return
+	 */
+	public int getSelectedPet() {
+		return list.getSelectedIndex();
+	}
+	/**
+	 * Returns the index of the sorting option that is currently selected in the combobox
+	 * @return
+	 */
+	public int getSelectedSortingOption() {
+		return sortComboBox.getSelectedIndex();
+	}
 	
+	/**
+	 * Adds the passed listener to the add pets button
+	 * @param listener
+	 */
 	public void addAddPetListener(ActionListener listener) {
 		addPetButton.addActionListener(listener);
 	}
+	/**
+	 * Adds the passed listener to the adopt pet button
+	 * @param listener
+	 */
 	public void addAdoptPetListener(ActionListener listener) {
 		adoptPetButton.addActionListener(listener);
 	}
+	/**
+	 * Adds the passed listener to the remove pet button
+	 * @param listener
+	 */
 	public void addRemovePetListener(ActionListener listener) {
 		removePetButton.addActionListener(listener);
 	}
+	/**
+	 * Adds the passed listener to the view pet details button
+	 * @param listener
+	 */
 	public void addViewPetListener(ActionListener listener) {
 		viewPetButton.addActionListener(listener);
 	}
+	/**
+	 * Adds the passed listener to the save pets button
+	 * @param listener
+	 */
 	public void addSavePetListListener(ActionListener listener) {
 		savePetListButton.addActionListener(listener);
 	}
+	/**
+	 * Adds the passed listener to the sorting combo box
+	 * @param listener
+	 */
 	public void addSortComboBoxListener(ActionListener listener) {
 		sortComboBox.addActionListener(listener);
 	}
 	
-	public int getSelectedPet() {
-		return list.getSelectedIndex();
-	}
-	public int getSelectedSortingOption() {
-		return sortComboBox.getSelectedIndex();
-	}
 }

@@ -8,7 +8,15 @@ import com.google.gson.Gson;
 
 import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
 
+/**
+ * Class for saving pets to a file
+ */
 public class PetSaver {
+	/**
+	 * Saves the passed shelter into a json file timestamped by current time
+	 * @param shelter
+	 * @return true if successfully saved, false otherwise
+	 */
 	public static boolean saveShelter(Shelter<?> shelter) {
 		LocalDateTime time = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYYMMDD_HHmmss");

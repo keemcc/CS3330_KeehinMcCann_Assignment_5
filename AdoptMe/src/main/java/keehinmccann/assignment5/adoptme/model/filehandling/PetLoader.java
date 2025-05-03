@@ -10,7 +10,15 @@ import keehinmccann.assignment5.adoptme.model.pet.Pet;
 import keehinmccann.assignment5.adoptme.model.pet.StandardPet;
 import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
 
+/**
+ * Class for loading pets into a shelter model
+ */
 public class PetLoader {
+	/**
+	 * Loads standard pet objects into the passed shelter
+	 * @param shelter
+	 * @return true if the load is successful, false otherwise
+	 */
 	public static boolean loadStandardPets(Shelter<Pet> shelter) {
 		try (FileReader fileReader = new FileReader("src/main/resources/pets.json")) {
 			StandardPet[] standardPets = new Gson().fromJson(fileReader, StandardPet[].class);
@@ -22,6 +30,11 @@ public class PetLoader {
 		}
 		return true;
 	}
+	/**
+	 * Loads exotic pets from json file into the passed shelter
+	 * @param shelter
+	 * @return true if successful, false otherwise
+	 */
 	public static boolean loadExoticPets(Shelter<Pet> shelter) {
 		try (FileReader fileReader = new FileReader("src/main/resources/exotic_animals.json")) {
 			ExoticPet[] exoticAnimals = new Gson().fromJson(fileReader, ExoticPet[].class);

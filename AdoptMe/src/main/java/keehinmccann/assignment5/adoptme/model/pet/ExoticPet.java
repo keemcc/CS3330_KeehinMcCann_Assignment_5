@@ -1,5 +1,8 @@
 package keehinmccann.assignment5.adoptme.model.pet;
 
+/**
+ * Class containing fields and methods relating to the exotic pet defined by the exotic pets json file
+ */
 public class ExoticPet {
 	private String uniqueId;
 	private String animalName;
@@ -7,6 +10,14 @@ public class ExoticPet {
 	private String subSpecies;
 	private int yearsOld;
 	
+	/**
+	 * Creates a new exotic pet with the passed parameters
+	 * @param uniqueId
+	 * @param animalName
+	 * @param category
+	 * @param subSpecies
+	 * @param yearsOld
+	 */
 	public ExoticPet(String uniqueId, String animalName, String category, String subSpecies, int yearsOld) {
 		this.uniqueId = uniqueId;
 		this.animalName = animalName;
@@ -15,45 +26,44 @@ public class ExoticPet {
 		this.yearsOld = yearsOld;
 	}
 	
+	/**
+	 * Returns the exotic pet's unique id
+	 * @return
+	 */
 	public String getUniqueId() {
 		return uniqueId;
 	}
 
-	public void setUniqueId(String uniqueId) {
-		this.uniqueId = uniqueId;
-	}
-
+	/**
+	 * Returns the animal's name
+	 * @return
+	 */
 	public String getAnimalName() {
 		return animalName;
 	}
 
-	public void setAnimalName(String animalName) {
-		this.animalName = animalName;
-	}
-
+	/**
+	 * Returns the animal's category
+	 * @return
+	 */
 	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
+	/**
+	 * Returns the animal's subSpecies
+	 * @return
+	 */
 	public String getSubSpecies() {
 		return subSpecies;
 	}
 
-	public void setSubSpecies(String subSpecies) {
-		this.subSpecies = subSpecies;
-	}
-
+	/**
+	 * Returns the animal's yearsOld
+	 * @return
+	 */
 	public int getYearsOld() {
 		return yearsOld;
 	}
-
-	public void setYearsOld(int yearsOld) {
-		this.yearsOld = yearsOld;
-	}
-
 	
 }

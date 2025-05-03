@@ -1,7 +1,5 @@
 package keehinmccann.assignment5.adoptme.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,8 +7,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.JCheckBox;
 
+/**
+ * Pet Details View shows the details of a pet
+ * it will be set with text in the fields after it is created
+ */
 public class PetDetailsView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -143,6 +144,15 @@ public class PetDetailsView extends JFrame {
 		adoptedPanel.add(adoptedTextField);
 	}
 	
+	/**
+	 * Sets the related text fields to hold the passed text for each field
+	 * @param id
+	 * @param name
+	 * @param type
+	 * @param species
+	 * @param age
+	 * @param adopted
+	 */
 	public void setPetTextFields(String id, String name, String type, String species, String age, String adopted) {
 		idTextField.setText(id);
 		nameTextField.setText(name);
