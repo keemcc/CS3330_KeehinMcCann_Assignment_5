@@ -22,14 +22,6 @@ public class Shelter<T extends Pet> {
 		return true;
 	}
 	
-	public boolean removePet(T pet) {
-		if (this.contains(pet)) {
-			petList.remove(pet);
-			return true;
-		}
-		return false;
-	}
-	
 	public boolean removePet(int index) {
 		if (petList.size() <= index) {
 			return false;
@@ -49,12 +41,6 @@ public class Shelter<T extends Pet> {
 			}
 		}
 		return false;
-	}
-	
-	public void printPets() {
-		for (Pet pet: petList) {
-			System.out.println(pet);
-		}
 	}
 	
 	public void sortPets() {
@@ -81,5 +67,12 @@ public class Shelter<T extends Pet> {
 			return null;
 		}
 		return petList.get(petIndex);
+	}
+	
+	public boolean adoptPet(int petIndex) {
+		if (petIndex >= petList.size()) {
+			return false;
+		}
+		return (getPet(petIndex).adopt());
 	}
 }

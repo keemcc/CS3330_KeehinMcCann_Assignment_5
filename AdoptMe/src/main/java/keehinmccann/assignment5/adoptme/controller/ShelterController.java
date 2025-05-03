@@ -100,13 +100,11 @@ public class ShelterController {
 				new PetErrorDialog("You must select a pet").setVisible(true);
 				return;
 			}
-			ArrayList<Pet> petList = shelterModel.getPets();
-			Pet pet = petList.get(selectedPetIndex);
-			if (!pet.adopt()) {
+			if (!shelterModel.adoptPet(selectedPetIndex)) {
 				new PetErrorDialog("This pet has already been adopted.").setVisible(true);
 				return;
 			}
-			shelterListView.updateView(petList);
+			updateView();
 		}
 		
 	}
