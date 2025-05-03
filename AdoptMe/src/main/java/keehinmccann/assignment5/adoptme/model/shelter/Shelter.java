@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import keehinmccann.assignment5.adoptme.model.pet.Pet;
+import keehinmccann.assignment5.adoptme.model.pet.StandardPet;
 
 public class Shelter<T extends Pet> {
 	private ArrayList<T> petList;
@@ -37,6 +38,19 @@ public class Shelter<T extends Pet> {
 		return true;
 	}
 	
+	public Pet createPet(int id, String name, String type, String species, int age, boolean adopted) {
+		return new StandardPet(id, name, type, species, age, adopted);
+	}
+	
+	public boolean idExists(String id) {
+		for (Pet pet : petList) {
+			if (pet.getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void printPets() {
 		for (Pet pet: petList) {
 			System.out.println(pet);
@@ -56,10 +70,8 @@ public class Shelter<T extends Pet> {
 	}
 	
 	public boolean contains(Pet pet) {
-		for (int i = 0; i < petList.size(); i++) {
-			if (petList.get(i).idEquals(pet)) {
-				return true;
-			}
+		if (idExists(pet.getId())) {
+			return true;
 		}
 		return false;
 	}

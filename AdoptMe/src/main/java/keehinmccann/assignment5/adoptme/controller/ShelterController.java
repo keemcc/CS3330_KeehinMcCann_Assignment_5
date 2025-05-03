@@ -6,17 +6,20 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
+import keehinmccann.assignment5.adoptme.controller.inputvalidation.ValidateUserInput;
 import keehinmccann.assignment5.adoptme.model.filehandling.PetLoader;
 import keehinmccann.assignment5.adoptme.model.pet.Pet;
 import keehinmccann.assignment5.adoptme.model.pet.comparators.AgeComparator;
 import keehinmccann.assignment5.adoptme.model.pet.comparators.SpeciesComparator;
 import keehinmccann.assignment5.adoptme.model.shelter.Shelter;
+import keehinmccann.assignment5.adoptme.view.AddPetView;
 import keehinmccann.assignment5.adoptme.view.PetAlreadyAdoptedDialog;
 import keehinmccann.assignment5.adoptme.view.ShelterListView;
 
 public class ShelterController {
 	private Shelter<Pet> shelterModel;
 	private ShelterListView shelterListView;
+	private AddPetView addPetView;
 	
 	public ShelterController(Shelter<Pet> model, ShelterListView view) {
 		shelterModel = model;
@@ -29,6 +32,7 @@ public class ShelterController {
 		shelterListView.addAdoptPetListener(new AdoptPetListener());
 		shelterListView.addRemovePetListener(new RemovePetListener());
 		shelterListView.addSortComboBoxListener(new SortComboBoxListener());
+		shelterListView.addAddPetListener(new AddPetListener());
 		updateView();
 		shelterListView.setVisible(true);
 	}
@@ -89,6 +93,52 @@ public class ShelterController {
 			default:
 				break;
 			}
+			shelterListView.updateView(shelterModel.getPets());
+		}
+		
+	}
+	
+	private class AddPetListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			addPetView = new AddPetView();
+			addPetView.setVisible(true);
+			addPetView.addSubmitButtonListener(new SubmitListener());
+		}
+		
+	}
+	
+	private class SubmitListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (!ValidateUserInput.validateInputInteger(addPetView.getIdText())) {
+				return;
+			}
+			int id = Integer.parseInt(addPetView.getIdText());
+			if (!ValidateUserInput.validateInputNotNull(addPetView.getNameText())) {
+				return;
+			}
+			String name = addPetView.getNameText();
+			if (!ValidateUserInput.validateInputNotNull(addPetView.getTypeText())) {
+				return;
+			}
+			String type = addPetView.getTypeText();
+			if (!ValidateUserInput.validateInputNotNull(addPetView.getSpeciesText())) {
+				return;
+			}
+			String species = addPetView.getSpeciesText();
+			if (!ValidateUserInput.validateInputInteger(addPetView.getAgeText())) {
+				return;
+			}
+			int age = Integer.parseInt(addPetView.getAgeText());
+			boolean adopted = addPetView.getAdoptedCheckBox();
+			Pet pet = shelterModel.createPet(id, name, type, species, age, adopted);
+			if (!shelterModel.addPet(pet)) {
+				return;
+			}
+			addPetView.dispose();
 			shelterListView.updateView(shelterModel.getPets());
 		}
 		
